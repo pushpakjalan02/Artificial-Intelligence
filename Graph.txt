@@ -1,0 +1,45 @@
+20
+23
+Oradea
+Zerind
+Arad
+Sibiu
+Timisoara
+Lugoj
+Mehadia
+Drobeta
+Craiova
+Kimnicu Vilcea
+Pitesti
+Fagaras
+Bucharest
+Giurgiu
+Urziceni
+Hirsova
+Eforie
+Vaslui
+Iasi
+Neamt
+Oradea	Zerind	71
+Zerind	Arad	75
+Oradea	Sibiu	151
+Arad	Sibiu	140
+Arad	Timisoara	118
+Timisoara	Lugoj	111
+Lugoj	Mehadia	70
+Mehadia	Drobeta	75
+Drobeta	Craiova	120
+Kimnicu Vilcea	Craiova	146
+Sibiu	Kimnicu Vilcea	80
+Kimnicu Vilcea	Pitesti	97
+Sibiu	Fagaras	99
+Pitesti	Craiova	138
+Pitesti	Bucharest	101
+Fagaras	Bucharest	211
+Giurgiu	Bucharest	90
+Bucharest	Urziceni	85
+Urziceni	Hirsova	98
+Hirsova	Eforie	86
+Urziceni	Vaslui	142
+Vaslui	Iasi	92
+Iasi	Neamt	87
