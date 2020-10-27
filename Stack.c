@@ -8,7 +8,7 @@ struct stackNode{
 };
 
 /* Method for Pushing Elements on the Stack */
-void push(struct stackNode* top, int value){
+void push(struct stackNode** top, int value){
     
     /* Declaring Variables */
     struct stackNode* nodeToPush;
@@ -18,30 +18,35 @@ void push(struct stackNode* top, int value){
     
     /* Assigning the New Element's Value and Pointer */
     nodeToPush -> value = value;
-    nodeToPush -> pointer = top;
+    nodeToPush -> pointer = *top;
 
-    /* Making top to Point to the New Top Element on the Stack */
-    top = nodeToPush;
+    /* Making Top to Point to the New Top Element on the Stack */
+    *top = nodeToPush;
 
     /* Done Pushing. Returning */
     return;
 }
 
 /* Method for Poping Elements from the Stack */
-int pop(struct stackNode* top){
+int pop(struct stackNode** top){
     
+    /* If Stack is Empty, then Return */
+    if(*top == NULL){
+        return -1;
+    }
+
     /* Declaring Variables */
     struct stackNode* nodeToPop;
     int value;
 
     /* Getting the Top Node for Popping from the Stack */
-    nodeToPop = top;
+    nodeToPop = *top;
 
     /* Getting the Value of the Node to be Popped */
     value = nodeToPop -> value;
 
     /* Making the Element Next to Top as Current Top */
-    top = nodeToPop -> pointer;
+    *top = nodeToPop -> pointer;
     
     /* Freeing Memory Occupied by the Popped Node */
     free(nodeToPop);

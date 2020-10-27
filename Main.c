@@ -3,11 +3,6 @@
 #include<stdlib.h>
 #include<string.h>
 
-/* Including Project Specific Headers */
-#include"DepthFirstSearch.c"
-#include"DepthLimitedSearch.c"
-#include"IterativeDeepeningSearch.c"
-
 /* Defining Structure for Storing All Graph - Related Information */
 struct graphInfo{
     int noOfNodes;
@@ -28,6 +23,11 @@ int getIndexFromMap(char** nodeMap, int noOfNodes, char* node){
     return -1;
 
 }
+
+/* Including Project Specific Headers */
+#include"DepthFirstSearch.c"
+#include"DepthLimitedSearch.c"
+#include"IterativeDeepeningSearch.c"
 
 /* Fetching the Input Graph from an Input File */
 struct graphInfo getInput(char* filename){
@@ -161,6 +161,8 @@ int main(int argc, char* argv[]){
 
     /* Fetching All Input */
     inputGraph = getInput(argv[1]);
+
+    depthFirstSearch(inputGraph);
 
     /* Done All Processing. Exiting. */
     return 0;
