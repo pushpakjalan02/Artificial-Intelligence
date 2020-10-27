@@ -158,11 +158,24 @@ int main(int argc, char* argv[]){
 
     /* Declaring Variables */
     struct graphInfo inputGraph;
+    char startState[1000], goalState[1000];
+    int startStateIndex, goalStateIndex;
 
     /* Fetching All Input */
     inputGraph = getInput(argv[1]);
 
-    depthFirstSearch(inputGraph);
+    /* Take Start and Goal States as Input */
+    printf("Enter Start State: ");
+    scanf("%[^\n]%*c", startState);
+    printf("Enter Goal State: ");
+    scanf("%[^\n]%*c", goalState);
+
+    printf("\n");
+
+    startStateIndex = getIndexFromMap(inputGraph.nodeMap, inputGraph.noOfNodes, startState);
+    goalStateIndex = getIndexFromMap(inputGraph.nodeMap, inputGraph.noOfNodes, goalState);
+    
+    depthFirstSearch(inputGraph, startStateIndex, goalStateIndex);
 
     /* Done All Processing. Exiting. */
     return 0;
