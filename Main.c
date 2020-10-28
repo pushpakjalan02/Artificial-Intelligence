@@ -178,6 +178,7 @@ int main(int argc, char* argv[]){
     
     depthFirstSearch(inputGraph, startStateIndex, goalStateIndex);
     depthLimitedSearch(inputGraph, startStateIndex, goalStateIndex);
+    iterativeDeepeningSearch(inputGraph, startStateIndex, goalStateIndex);
 
     /* Done All Processing. Exiting. */
     return 0;
