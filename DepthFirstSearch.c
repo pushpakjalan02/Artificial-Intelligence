@@ -1,9 +1,6 @@
 /* Including Build-In Headers */
 #include<stdio.h>
 
-/* Including User-Defined Headers */
-#include"Stack.c"
-
 /* Checking if a given successor node forms a cycle with the current path being seen */
 int notInCurrentPath(int* currentPath, int currentPathLength, int node){
     int i;

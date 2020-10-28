@@ -25,6 +25,7 @@ int getIndexFromMap(char** nodeMap, int noOfNodes, char* node){
 }
 
 /* Including Project Specific Headers */
+#include"Stack.c"
 #include"DepthFirstSearch.c"
 #include"DepthLimitedSearch.c"
 #include"IterativeDeepeningSearch.c"
@@ -176,6 +177,7 @@ int main(int argc, char* argv[]){
     goalStateIndex = getIndexFromMap(inputGraph.nodeMap, inputGraph.noOfNodes, goalState);
     
     depthFirstSearch(inputGraph, startStateIndex, goalStateIndex);
+    depthLimitedSearch(inputGraph, startStateIndex, goalStateIndex);
 
     /* Done All Processing. Exiting. */
     return 0;
