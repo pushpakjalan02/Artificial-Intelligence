@@ -149,6 +149,7 @@ struct graphInfo getInput(char* filename){
 
 }
 
+/* Main Method. Runs the various algorithms on the input graph. */
 int main(int argc, char* argv[]){
     
     /* If Program is not Run Correctly, Prompt to Run Program in Correct Format and Exit.*/
@@ -166,19 +167,37 @@ int main(int argc, char* argv[]){
     inputGraph = getInput(argv[1]);
 
     /* Take Start and Goal States as Input */
+    printf("------ Give Input ------\n\n");
     printf("Enter Start State: ");
     scanf("%[^\n]%*c", startState);
     printf("Enter Goal State: ");
     scanf("%[^\n]%*c", goalState);
+    printf("\n------ Input Recieved -----\n\n");
 
     printf("\n");
 
+    /* Map Start and Goal states to their respective indices */
     startStateIndex = getIndexFromMap(inputGraph.nodeMap, inputGraph.noOfNodes, startState);
     goalStateIndex = getIndexFromMap(inputGraph.nodeMap, inputGraph.noOfNodes, goalState);
     
+    /* Find Path and Statistics using Depth First Search */
+    printf("------ Starting Depth First Search ------\n\n");
     depthFirstSearch(inputGraph, startStateIndex, goalStateIndex);
+    printf("------ Depth First Search Ended ------\n\n");
+    
+    printf("\n");
+
+    /* Find Path and Statistics using Depth Limited Search */
+    printf("------ Starting Depth Limited Search ------\n\n");
     depthLimitedSearch(inputGraph, startStateIndex, goalStateIndex);
+    printf("------ Depth Limited Search Ended ------\n\n");
+
+    printf("\n");
+
+    /* Find Path and Statistics using Iterative Deepening Depth First Search */
+    printf("------ Starting Iterative Deepening Depth First Search ------\n\n");
     iterativeDeepeningSearch(inputGraph, startStateIndex, goalStateIndex);
+    printf("------ Iterative Deepening Depth First Search Ended ------\n\n");
 
     /* Done All Processing. Exiting. */
     return 0;
