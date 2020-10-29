@@ -25,7 +25,7 @@ void iterativeDeepeningSearch(struct graphInfo inputGraph, int startState, int g
         /* Push Start State to the Top of the Stack */
         push(&top, startState);
 
-        /* Loop to perform depth limited search and find the goal node in the depth limited sub-graph */
+        /* Loop to perform depth limited search and find the goal node in the depth limited graph */
         do{
 
             /* Popping out topmost node from the stack */
@@ -66,7 +66,7 @@ void iterativeDeepeningSearch(struct graphInfo inputGraph, int startState, int g
 
         } while(top != NULL);
 
-        /* If path found, print the path */
+        /* If path found, print the path and break */
         if(flag == 1){
             printf("Path is: ");
             for(i = 0; i < currentPathLength - 1; i++){

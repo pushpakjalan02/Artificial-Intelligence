@@ -1,7 +1,7 @@
 /* Including Build-In Headers */
 #include<stdio.h>
 
-/* Performs Depth First Search on an Input Graph for Given Start State and Goal State */
+/* Performs Depth Limited Search on an Input Graph for Given Start State and Goal State */
 void depthLimitedSearch(struct graphInfo inputGraph, int startState, int goalState){
     
     /* Variable Declarations */
@@ -25,7 +25,7 @@ void depthLimitedSearch(struct graphInfo inputGraph, int startState, int goalSta
     /* Push Start State to the Top of the Stack */
     push(&top, startState);
 
-    /* Loop to find the Goal Node until either we find the Goal Node or we finish searching the whole Graph */
+    /* Loop to find the Goal Node until either we find the Goal Node or we finish searching the depth limited graph */
     do{
 
         /* Popping out topmost node from the stack */
@@ -75,6 +75,6 @@ void depthLimitedSearch(struct graphInfo inputGraph, int startState, int goalSta
         printf("%s\n\n", inputGraph.nodeMap[currentPath[i]]);
     }
     else{
-        printf("No Path Found");
+        printf("No Path Found\n\n");
     }
 }

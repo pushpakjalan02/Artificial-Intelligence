@@ -62,6 +62,6 @@ void depthFirstSearch(struct graphInfo inputGraph, int startState, int goalState
         printf("%s\n\n", inputGraph.nodeMap[currentPath[i]]);
     }
     else{
-        printf("No Path Found");
+        printf("No Path Found\n\n");
     }
 }
