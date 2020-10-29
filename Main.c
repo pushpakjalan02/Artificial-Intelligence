@@ -2,6 +2,33 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<ctype.h>
+
+/* Comparing two strings ignoring case */
+int strcmpInsensitive(char* str1, char* str2){
+
+    /* Variable Declarations */
+    int minLength = strlen(str1) > strlen(str2) ? strlen(str2) : strlen(str1);
+    int i;
+    
+    for(i = 0; i < minLength; i++){
+        if(toupper(str1[i]) > toupper(str2[i])){
+            return 1;
+        }
+        else if(toupper(str1[i]) < toupper(str2[i])){
+            return -1;
+        }
+    }
+    if(strlen(str1) == strlen(str2)){
+        return 0;
+    }
+    else if(strlen(str1) > strlen(str2)){
+        return 1;
+    }
+    else{
+        return -1;
+    } 
+}
 
 /* Defining Structure for Storing All Graph - Related Information */
 struct graphInfo{
@@ -25,6 +52,7 @@ int getIndexFromMap(char** nodeMap, int noOfNodes, char* node){
 }
 
 /* Including Project Specific Headers */
+#include"MergeSort.c"
 #include"Common.c"
 #include"DepthFirstSearch.c"
 #include"DepthLimitedSearch.c"
@@ -102,6 +130,9 @@ struct graphInfo getInput(char* filename){
     
     printf("------ All Nodes Fetched ------\n\n");
 
+    /* Sort the nodes in nodeMap of inputGraph in alphabetically decreasing order. This helps us to expand nodes
+    in alphabetically increasing order in the algorithms run in this program */
+    mergeSort(inputGraph.nodeMap, 0, inputGraph.noOfNodes - 1);
 
     /* Fetching Edges from Input File */
     printf("------ Started Fetching Edges ------\n\n");
