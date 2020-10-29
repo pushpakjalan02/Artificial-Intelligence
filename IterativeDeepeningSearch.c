@@ -1,17 +1,6 @@
 /* Including Build-In Headers */
 #include<stdio.h>
 
-/* Checking if a given successor node forms a cycle with the current path being seen */
-/* int notInCurrentPath(int* currentPath, int currentPathLength, int node){
-    int i;
-    for(i = 0; i < currentPathLength; i++){
-        if(currentPath[i] == node){
-            return 0;
-        }
-    }
-    return 1;
-} */
-
 /* Performs Iterative Deepening Search on an Input Graph for Given Start State and Goal State */
 void iterativeDeepeningSearch(struct graphInfo inputGraph, int startState, int goalState){
     

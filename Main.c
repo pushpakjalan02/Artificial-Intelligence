@@ -25,7 +25,7 @@ int getIndexFromMap(char** nodeMap, int noOfNodes, char* node){
 }
 
 /* Including Project Specific Headers */
-#include"Stack.c"
+#include"Common.c"
 #include"DepthFirstSearch.c"
 #include"DepthLimitedSearch.c"
 #include"IterativeDeepeningSearch.c"
