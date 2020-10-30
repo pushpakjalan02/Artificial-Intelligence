@@ -63,6 +63,13 @@ struct graphInfo{
     int** graph;
 };
 
+/* Defining structure for providing summarization of different algorithms */
+struct algoSummary{
+    int visitedNodeCount;
+    int totalCost;
+    int goalDepth;
+};
+
 /* Getting a Graph Node's Index from nodeMap Array of graphInfo */
 int getIndexFromMap(char** nodeMap, int noOfNodes, char* node){
 
@@ -218,6 +225,9 @@ int main(int argc, char* argv[]){
     struct graphInfo inputGraph;
     char startState[1000], goalState[1000];
     int startStateIndex, goalStateIndex;
+    struct algoSummary* dfsSummary;
+    struct algoSummary* dlsSummary;
+    struct algoSummary* iddfsSummary;
 
     /* Fetching All Input */
     inputGraph = getInput(argv[1]);
@@ -269,7 +279,7 @@ int main(int argc, char* argv[]){
 
     /* Find Path and Statistics using Depth First Search */
     printf("------ Starting Depth First Search ------\n\n");
-    depthFirstSearch(inputGraph, startStateIndex, goalStateIndex);
+    dfsSummary = depthFirstSearch(inputGraph, startStateIndex, goalStateIndex);
     printf("------ Depth First Search Ended ------\n\n");
     
     printf("\n");
@@ -285,6 +295,11 @@ int main(int argc, char* argv[]){
     printf("------ Starting Iterative Deepening Depth First Search ------\n\n");
     iterativeDeepeningSearch(inputGraph, startStateIndex, goalStateIndex);
     printf("------ Iterative Deepening Depth First Search Ended ------\n\n");
+
+    /* Print Summary of all Algos. */
+    printf("Total Cost: %d\n", dfsSummary -> totalCost);
+    printf("No. of Nodes Visited: %d\n", dfsSummary -> visitedNodeCount);
+    printf("Goal Depth: %d\n\n", dfsSummary -> goalDepth);
 
     /* Done All Processing. Exiting. */
     return 0;
