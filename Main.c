@@ -4,6 +4,31 @@
 #include<string.h>
 #include<ctype.h>
 
+/* Trimming a string */
+void stringTrim(char* string){
+    
+    /* Variable Declarations */
+    int i, j, k;
+
+    /* Code */
+    for(i = 0; i < strlen(string); i++){
+        if(!isspace(string[i])){
+            break;
+        }
+    }
+    for(j = strlen(string) - 1; j >= 0; j--){
+        if(!isspace(string[j])){
+            break;
+        }
+    }
+    for(k = 0; k < j - i + 1; k++){
+        string[k] = string[i + k];
+    }
+    string[k] = '\0';
+
+    return;
+}
+
 /* Comparing two strings ignoring case */
 int strcmpInsensitive(char* str1, char* str2){
 
@@ -182,7 +207,7 @@ struct graphInfo getInput(char* filename){
 
 /* Main Method. Runs the various algorithms on the input graph. */
 int main(int argc, char* argv[]){
-    
+        
     /* If Program is not Run Correctly, Prompt to Run Program in Correct Format and Exit.*/
     if(argc != 2){
         printf("Please run the program in the format: <program_name> <input_file_name>");
@@ -206,6 +231,10 @@ int main(int argc, char* argv[]){
     printf("\n------ Input Recieved -----\n\n");
 
     printf("\n");
+
+    /* Trim Start and Goal State Strings */
+    stringTrim(startState);
+    stringTrim(goalState);
 
     /* Map Start and Goal states to their respective indices */
     startStateIndex = getIndexFromMap(inputGraph.nodeMap, inputGraph.noOfNodes, startState);
