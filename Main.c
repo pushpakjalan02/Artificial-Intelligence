@@ -68,7 +68,7 @@ int getIndexFromMap(char** nodeMap, int noOfNodes, char* node){
 
     int i;
     for(i = 0; i < noOfNodes; i++){
-        if(!strcmp(nodeMap[i], node)){
+        if(!strcmpInsensitive(nodeMap[i], node)){
             return i;
         }
     }
@@ -224,22 +224,49 @@ int main(int argc, char* argv[]){
 
     /* Take Start and Goal States as Input */
     printf("------ Give Input ------\n\n");
-    printf("Enter Start State: ");
-    scanf("%[^\n]%*c", startState);
-    printf("Enter Goal State: ");
-    scanf("%[^\n]%*c", goalState);
+    while(1){
+        
+        printf("Enter Start State: ");
+        scanf("%[^\n]%*c", startState);
+        
+        /* Trim Start State String */
+        stringTrim(startState);  
+
+        /* Map Start state to its respective index */
+        startStateIndex = getIndexFromMap(inputGraph.nodeMap, inputGraph.noOfNodes, startState);
+
+        if(startStateIndex >= 0){
+            break;
+        }
+
+        printf("Invalid Start State. Re-enter\n\n");
+
+    }
+
+    printf("\n");
+    
+    while(1){
+        
+        printf("Enter Goal State: ");
+        scanf("%[^\n]%*c", goalState);
+        
+        /* Trim Goal State String */
+        stringTrim(goalState);
+
+        /* Map Goal states to its respective index */
+        goalStateIndex = getIndexFromMap(inputGraph.nodeMap, inputGraph.noOfNodes, goalState);
+        
+        if(goalStateIndex >= 0){
+            break;
+        }
+
+        printf("Invalid Goal State. Re-enter\n\n");
+        
+    }
     printf("\n------ Input Recieved -----\n\n");
 
     printf("\n");
 
-    /* Trim Start and Goal State Strings */
-    stringTrim(startState);
-    stringTrim(goalState);
-
-    /* Map Start and Goal states to their respective indices */
-    startStateIndex = getIndexFromMap(inputGraph.nodeMap, inputGraph.noOfNodes, startState);
-    goalStateIndex = getIndexFromMap(inputGraph.nodeMap, inputGraph.noOfNodes, goalState);
-    
     /* Find Path and Statistics using Depth First Search */
     printf("------ Starting Depth First Search ------\n\n");
     depthFirstSearch(inputGraph, startStateIndex, goalStateIndex);
