@@ -296,21 +296,25 @@ int main(int argc, char* argv[]){
     iddfsSummary = iterativeDeepeningSearch(inputGraph, startStateIndex, goalStateIndex);
     printf("------ Iterative Deepening Depth First Search Ended ------\n\n");
 
-    /* Print Summary of all Algos. */
-    printf("Total Cost: %d\n", dfsSummary -> totalCost);
-    printf("No. of Nodes Visited: %d\n", dfsSummary -> visitedNodeCount);
-    printf("Goal Depth: %d\n\n", dfsSummary -> goalDepth);
+    printf("\n");
 
-    /* Print Summary of all Algos. */
-    printf("Total Cost: %d\n", dlsSummary -> totalCost);
-    printf("No. of Nodes Visited: %d\n", dlsSummary -> visitedNodeCount);
-    printf("Goal Depth: %d\n\n", dlsSummary -> goalDepth);
-
-    /* Print Summary of all Algos. */
-    printf("Total Cost: %d\n", iddfsSummary -> totalCost);
-    printf("No. of Nodes Visited: %d\n", iddfsSummary -> visitedNodeCount);
-    printf("Goal Depth: %d\n\n", iddfsSummary -> goalDepth);
-
+    /* Print Statistics of all Algos. */
+    printf("--------------------- Final Statistics ----------------------\n\n");
+    printf(".-----------------------------------------------------------.\n");
+    printf("|       | Total Cost | Visited Node Count | Goal Node Depth |\n");
+    printf("|-------|------------|--------------------|-----------------|\n");
+    printf("| DFS   | %10d | %18d | %15d |\n", dfsSummary -> totalCost, dfsSummary -> visitedNodeCount, dfsSummary -> goalDepth);
+    printf("|-------|------------|--------------------|-----------------|\n");
+    printf("| DLS   | %10d | %18d | %15d |\n", dlsSummary -> totalCost, dlsSummary -> visitedNodeCount, dlsSummary -> goalDepth);
+    printf("|-------|------------|--------------------|-----------------|\n");
+    printf("| IDDFS | %10d | %18d | %15d |\n", iddfsSummary -> totalCost, iddfsSummary -> visitedNodeCount, iddfsSummary -> goalDepth);
+    printf("'-----------------------------------------------------------'\n");
+    printf("\n");
+    printf("-1 means undefined\n\n");
+    printf("-------------------- End of Statistics ----------------------\n\n");
+    printf("\n");
+    printf("----------------- Thank You. Exiting Now. -------------------\n\n");
+    
     /* Done All Processing. Exiting. */
     return 0;
 
