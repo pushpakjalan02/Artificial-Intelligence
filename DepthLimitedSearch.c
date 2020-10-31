@@ -18,8 +18,14 @@ struct algoSummary* depthLimitedSearch(struct graphInfo inputGraph, int startSta
     summary -> visitedNodeCount = 0;
 
     /* Getting depth limit from user as input */
-    printf("Enter Depth Limit: ");
-    scanf("%d", &depthLimit);
+    while(1){
+        printf("Enter Depth Limit: ");
+        scanf("%d", &depthLimit);
+        if(depthLimit >= 0){
+            break;
+        }
+        printf("Invalid Depth Limit. Please Re-Enter.\n\n");
+    }
 
     printf("\n");
 
