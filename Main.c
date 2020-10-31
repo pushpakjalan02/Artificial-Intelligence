@@ -286,20 +286,30 @@ int main(int argc, char* argv[]){
 
     /* Find Path and Statistics using Depth Limited Search */
     printf("------ Starting Depth Limited Search ------\n\n");
-    depthLimitedSearch(inputGraph, startStateIndex, goalStateIndex);
+    dlsSummary = depthLimitedSearch(inputGraph, startStateIndex, goalStateIndex);
     printf("------ Depth Limited Search Ended ------\n\n");
 
     printf("\n");
 
     /* Find Path and Statistics using Iterative Deepening Depth First Search */
     printf("------ Starting Iterative Deepening Depth First Search ------\n\n");
-    iterativeDeepeningSearch(inputGraph, startStateIndex, goalStateIndex);
+    iddfsSummary = iterativeDeepeningSearch(inputGraph, startStateIndex, goalStateIndex);
     printf("------ Iterative Deepening Depth First Search Ended ------\n\n");
 
     /* Print Summary of all Algos. */
     printf("Total Cost: %d\n", dfsSummary -> totalCost);
     printf("No. of Nodes Visited: %d\n", dfsSummary -> visitedNodeCount);
     printf("Goal Depth: %d\n\n", dfsSummary -> goalDepth);
+
+    /* Print Summary of all Algos. */
+    printf("Total Cost: %d\n", dlsSummary -> totalCost);
+    printf("No. of Nodes Visited: %d\n", dlsSummary -> visitedNodeCount);
+    printf("Goal Depth: %d\n\n", dlsSummary -> goalDepth);
+
+    /* Print Summary of all Algos. */
+    printf("Total Cost: %d\n", iddfsSummary -> totalCost);
+    printf("No. of Nodes Visited: %d\n", iddfsSummary -> visitedNodeCount);
+    printf("Goal Depth: %d\n\n", iddfsSummary -> goalDepth);
 
     /* Done All Processing. Exiting. */
     return 0;

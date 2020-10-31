@@ -2,10 +2,15 @@
 #include<stdio.h>
 
 /* Performs Iterative Deepening Search on an Input Graph for Given Start State and Goal State */
-void iterativeDeepeningSearch(struct graphInfo inputGraph, int startState, int goalState){
+struct algoSummary* iterativeDeepeningSearch(struct graphInfo inputGraph, int startState, int goalState){
     
     /* Variable Declarations */
     int depthLimit = 0;
+    struct algoSummary* summary;
+    
+    /* Allocating memory to store DLS's summary */
+    summary = (struct algoSummary*)malloc(sizeof(struct algoSummary));
+    summary -> visitedNodeCount = 0;
 
     /* Loop to find the Goal Node in the graph by gradually increasing depth limits and performing depth limited 
     search until the goal at the shallowest depth is found */
@@ -38,6 +43,8 @@ void iterativeDeepeningSearch(struct graphInfo inputGraph, int startState, int g
                 continue;
             }
 
+            summary -> visitedNodeCount += 1;
+
             /* Appending the current node to the current path */
             currentPath[currentPathLength] = currentNode;
             currentPathLength++;
@@ -68,12 +75,19 @@ void iterativeDeepeningSearch(struct graphInfo inputGraph, int startState, int g
 
         /* If path found, print the path and break */
         if(flag == 1){
+        
+            summary -> totalCost = 0;
+            
             printf("Path is: ");
             for(i = 0; i < currentPathLength - 1; i++){
                 printf("%s -> ", inputGraph.nodeMap[currentPath[i]]);
+                summary -> totalCost += inputGraph.graph[currentPath[i]][currentPath[i+1]];
             }
             printf("%s\n\n", inputGraph.nodeMap[currentPath[i]]);
-            break;
+
+            summary -> goalDepth = currentPathLength - 1;
+
+            return summary;
         }
 
         /* Increasing depth limit if goal node not found in current sub-graph */

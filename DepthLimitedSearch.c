@@ -2,7 +2,7 @@
 #include<stdio.h>
 
 /* Performs Depth Limited Search on an Input Graph for Given Start State and Goal State */
-void depthLimitedSearch(struct graphInfo inputGraph, int startState, int goalState){
+struct algoSummary* depthLimitedSearch(struct graphInfo inputGraph, int startState, int goalState){
     
     /* Variable Declarations */
     struct stackNode* top = NULL;
@@ -11,6 +11,11 @@ void depthLimitedSearch(struct graphInfo inputGraph, int startState, int goalSta
     int currentPathLength, currentNode;
     int i, j;
     int flag = 0;
+    struct algoSummary* summary;
+    
+    /* Allocating memory to store DLS's summary */
+    summary = (struct algoSummary*)malloc(sizeof(struct algoSummary));
+    summary -> visitedNodeCount = 0;
 
     /* Getting depth limit from user as input */
     printf("Enter Depth Limit: ");
@@ -37,6 +42,8 @@ void depthLimitedSearch(struct graphInfo inputGraph, int startState, int goalSta
             currentPathLength--;
             continue;
         }
+
+        summary -> visitedNodeCount += 1;
 
         /* Appending the current node to the current path */
         currentPath[currentPathLength] = currentNode;
@@ -68,13 +75,24 @@ void depthLimitedSearch(struct graphInfo inputGraph, int startState, int goalSta
 
     /* If path found, print the path. Else, display that no path is available */
     if(flag == 1){
+        
+        summary -> totalCost = 0;
+        
         printf("Path is: ");
         for(i = 0; i < currentPathLength - 1; i++){
             printf("%s -> ", inputGraph.nodeMap[currentPath[i]]);
+            summary -> totalCost += inputGraph.graph[currentPath[i]][currentPath[i+1]];
         }
         printf("%s\n\n", inputGraph.nodeMap[currentPath[i]]);
+
+        summary -> goalDepth = currentPathLength - 1;
+
+        return summary;
     }
     else{
         printf("No Path Found\n\n");
+        summary -> totalCost = -1;
+        summary -> goalDepth = -1;
+        return summary;
     }
 }
